@@ -1,0 +1,113 @@
+#California Housing Price Prediction
+#Overview
+In this project, I have built a machine learning model to predict housing prices in California.
+The goal is to predict housing prices in California districts based on features like location, income, and house characteristics.
+I worked through the full ML pipeline including data cleaning, feature engineering, model building, and evaluation.
+
+The main purpose was to understand how real-world data is handled, and how models actually make predictions.
+
+Dataset
+Source: https://github.com/ageron/handson-ml/blob/master/datasets/housing/housing.csv
+
+Description: The dataset contains census data about housing in California districts during the 1990s.
+
+Target Variable: median_house_value (the house price I am trying to predict).
+
+Steps I Followed
+1. Loading the Data
+Imported the dataset directly from the GitHub URL using pandas.
+
+Did a quick check (.head(), .info()) to understand the columns and data types.
+
+2. Data Cleaning
+Found missing values in the total_bedrooms column.
+
+Dropped rows where total_bedrooms was missing to keep things simple.
+
+No other major missing value issues were found.
+
+3. Data Exploration
+Plotted histograms for median_house_value to see the price distribution.
+
+Observed the data was a bit right-skewed, meaning most houses were affordable but a few were very expensive.
+
+4. Feature Engineering
+Created new features to capture more information:
+
+rooms_per_house = total rooms divided by households.
+
+people_per_house = population divided by households.
+
+Checked correlations with the target variable.
+
+median_income was found to have the highest positive correlation with house prices.
+
+5. Train-Test Split
+Split the data into training and testing sets (80%-20%) to evaluate models properly.
+
+6. Model Building
+Trained three Linear Regression models:
+
+Using base features only.
+
+Using engineered features only.
+
+Using all features combined.
+
+Compared the Mean Squared Error (MSE) of these models.
+
+Also trained a Random Forest Regressor using all features, which performed better than Linear Regression.
+
+7. Evaluation
+Linear Regression MSE with all features: ~4.45 billion.
+
+Random Forest MSE with all features: ~2.73 billion (lower is better).
+
+Random Forest clearly handled the data better than a simple Linear model.
+
+8. Feature Importance
+Analyzed which features were most important for the Random Forest model.
+
+median_income was the top feature influencing house prices, followed by latitude and longitude.
+
+
+# Final Observations
+
+Median income is the strongest indicator of house prices.
+
+Engineered features like rooms_per_house and people_per_house did not have a strong direct correlation, but they still helped a bit.
+
+Random Forest is a strong choice for non-linear datasets like this.
+
+Proper data cleaning and feature engineering are very important before modeling.
+
+# Learnings from this Project
+
+Machine learning is not just about applying a model. It's about understanding the data deeply.
+
+Good features matter even more than fancy models.
+
+Always split data properly to avoid fooling yourself with wrong results.
+
+Visualization is powerful to understand what’s happening inside data.
+
+Simpler models (like Linear Regression) can teach a lot even if they don't always perform best.
+
+# Next Steps
+
+Deploying model.
+
+learn ML Ops (experiment tracking, model versioning, etc.)
+
+# Tools Used
+Python (Jupyter Notebook)
+
+Pandas, Matplotlib, Seaborn
+
+Scikit-Learn
+
+# Files in the Repository
+
+File	Purpose
+housing_price_prediction.ipynb     	--  Jupyter Notebook containing all code and steps
+housing_price_prediction_report.md	--  This project report summarizing my work
